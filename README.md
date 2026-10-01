@@ -6,6 +6,20 @@ The application monitors selected Sub-GHz bands, measures changes in received si
 
 > RF Canvas is designed as a passive RF activity visualization and analysis tool. It does not record, replay, clone, or transmit captured remote-control signals.
 
+## Screenshots
+
+### Analyze Mode
+![RF Canvas Analyze Mode](images/01-analyze-mode.png)
+
+### App Menu
+![RF Canvas in Sub-GHz menu](images/02-rf-canvas-menu.png)
+
+### Hybrid Mode
+![RF Canvas Hybrid Mode](images/03-hybrid-mode.png)
+
+### RF HIT Detection
+![RF Canvas RF HIT Detection](images/04-hit-detection.png)
+
 ## Features
 
 - Passive Sub-GHz RF activity monitoring
@@ -26,16 +40,7 @@ The application monitors selected Sub-GHz bands, measures changes in received si
 ## Modes
 
 ### Analyze
-Displays technical RF information including:
-
-- Current frequency
-- RSSI
-- Adaptive baseline
-- RSSI delta
-- Peak signal level
-- Total detected RF events
-- Auto / Manual mode
-- Sensitivity level
+Displays technical RF information including current frequency, RSSI, adaptive baseline, RSSI delta, peak signal level, total detected RF events, Auto / Manual mode and sensitivity level.
 
 ### Art
 Uses detected RF activity as input for generative Conway's Game of Life patterns. Stronger RF events create denser visual patterns.
@@ -56,9 +61,7 @@ Combines the live generative visualization with compact RF analysis information.
 
 ## RF Event Detection
 
-RF Canvas first calibrates a noise baseline for each monitored frequency.
-
-A signal is treated as an RF event when its RSSI rises above the learned baseline by the active sensitivity threshold.
+RF Canvas first calibrates a noise baseline for each monitored frequency. A signal is treated as an RF event when its RSSI rises above the learned baseline by the active sensitivity threshold.
 
 | Mode | Approx. Trigger Delta |
 |---|---:|
@@ -80,9 +83,7 @@ These frequencies are used for passive RF activity detection. RF Canvas does not
 
 ## Generative Visualization
 
-Each detected RF event injects stable patterns such as gliders and blocks into a Conway's Game of Life simulation.
-
-The amount of generated content depends on the detected signal delta:
+Each detected RF event injects stable patterns such as gliders and blocks into a Conway's Game of Life simulation. The amount of generated content depends on the detected signal delta.
 
 - Small RF event → light visual activity
 - Medium RF event → larger pattern
@@ -104,11 +105,16 @@ Developed and tested with:
 ## Project Structure
 
 ```text
-applications_user/
-└── rf_canvas/
-    ├── application.fam
-    ├── rf_canvas.c
-    └── rf_canvas.png
+rf-canvas/
+├── README.md
+├── application.fam
+├── rf_canvas.c
+├── rf_canvas.png
+└── images/
+    ├── 01-analyze-mode.png
+    ├── 02-rf-canvas-menu.png
+    ├── 03-hybrid-mode.png
+    └── 04-hit-detection.png
 ```
 
 ## Build and Launch
@@ -132,15 +138,6 @@ Apps → Sub-GHz → RF Canvas
 ```
 
 without requiring a computer connection.
-
-## Suggested Screenshots
-
-For the repository, capture these four images:
-
-1. RF Canvas icon visible in `Apps → Sub-GHz`
-2. Analyze mode during idle RF monitoring
-3. `HIT` display while a nearby permitted RF remote is activated
-4. Hybrid mode showing both RF measurements and Game of Life visuals
 
 ## Safety / Scope
 
