@@ -20,6 +20,9 @@ The application monitors selected Sub-GHz bands, measures changes in received si
 ### RF HIT Detection
 ![RF Canvas RF HIT Detection](images/04-hit-detection.png)
 
+### High-Signal Generative Art
+![RF Canvas High-Signal Generative Art](images/05-art-high-signal.png)
+
 ## Features
 
 - Passive Sub-GHz RF activity monitoring
@@ -117,7 +120,8 @@ rf-canvas/
     ├── 01-analyze-mode.png
     ├── 02-rf-canvas-menu.png
     ├── 03-hybrid-mode.png
-    └── 04-hit-detection.png
+    ├── 04-hit-detection.png
+    └── 05-art-high-signal.png
 ```
 
 ## Build and Launch
