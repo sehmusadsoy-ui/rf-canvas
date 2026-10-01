@@ -1,0 +1,15 @@
+App(
+    appid="rf_canvas",
+    name="RF Canvas",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="rf_canvas_app",
+    cdefines=["APP_RF_CANVAS"],
+    requires=["gui", "subghz"],
+    stack_size=4 * 1024,
+    order=20,
+    fap_icon="rf_canvas.png",
+    fap_category="Sub-GHz",
+    fap_author="sehma",
+    fap_version="1.0",
+    fap_description="Passive Sub-GHz RF analyzer and generative Game of Life visualizer.",
+)
