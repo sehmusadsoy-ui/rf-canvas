@@ -107,6 +107,9 @@ Developed and tested with:
 ```text
 rf-canvas/
 ├── README.md
+├── LICENSE
+├── CHANGELOG.md
+├── .gitignore
 ├── application.fam
 ├── rf_canvas.c
 ├── rf_canvas.png
@@ -145,8 +148,16 @@ RF Canvas is intended for passive spectrum activity observation, education, expe
 
 The project does not implement signal replay, rolling-code attacks, credential extraction, device impersonation or protocol cloning.
 
+## Changelog
+
+Release history is documented in [`CHANGELOG.md`](CHANGELOG.md).
+
+## License
+
+This project is licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
+
 ## Version
 
-**RF Canvas v1.0 Stable**
+**RF Canvas v1.0.0 Stable**
 
 Initial stable release combining passive Sub-GHz RF analysis with real-time generative visualization.
