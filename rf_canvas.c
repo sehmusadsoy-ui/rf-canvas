@@ -451,6 +451,9 @@ int32_t rf_canvas_app(void* p) {
     RfCanvasApp* app =
         malloc(sizeof(RfCanvasApp));
 
+    // Gracefully reject allocation failure instead of dereferencing NULL.
+    if(!app) return -1;
+
     memset(
         app,
         0,
