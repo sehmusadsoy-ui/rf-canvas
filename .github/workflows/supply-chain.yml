@@ -1,0 +1,57 @@
+name: Supply-chain review
+
+# Dependency review on pull requests (public repos; GitHub Advanced Security is
+# required for private ones) and an SPDX SBOM exported from GitHub's dependency
+# graph with a SHA-256 checksum. Read-only token, no secrets, pinned Actions.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supply-chain-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dependency-review:
+    if: github.event_name == 'pull_request' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Review dependency changes
+        uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: never
+
+  sbom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Export SPDX SBOM from the dependency graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${REPO}/dependency-graph/sbom" > sbom.spdx.json
+          python3 -c "import json; d=json.load(open('sbom.spdx.json')); print('packages:', len(d['sbom'].get('packages', [])))"
+          sha256sum sbom.spdx.json | tee sbom.spdx.json.sha256
+      - name: Upload SBOM
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sbom-spdx
+          path: |
+            sbom.spdx.json
+            sbom.spdx.json.sha256
+          retention-days: 30
+          if-no-files-found: error
