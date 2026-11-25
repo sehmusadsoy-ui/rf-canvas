@@ -228,7 +228,9 @@ static void draw_art(Canvas* canvas, RfCanvasApp* app) {
 
 static void draw_analyze(Canvas* canvas, RfCanvasApp* app) {
     canvas_set_font(canvas, FontPrimary);
-    canvas_draw_str(canvas, 2, 10, "RF CANVAS ANALYZE");
+    canvas_draw_str(canvas, 2, 10, "ANALYZE");
+    canvas_set_font(canvas, FontSecondary);
+    canvas_draw_str_aligned(canvas, 127, 10, AlignRight, AlignBottom, "WorksDevLabs");
 
     canvas_set_font(canvas, FontSecondary);
 

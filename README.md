@@ -165,3 +165,5 @@ This project is licensed under the **MIT License**. See [`LICENSE`](LICENSE) for
 **RF Canvas v1.0.0 Stable**
 
 Initial stable release combining passive Sub-GHz RF analysis with real-time generative visualization.
+
+[WorksDevLab's](https://github.com/WorksDevLabs)
